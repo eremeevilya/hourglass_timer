@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Hourglass</string>
+
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="time_out">Время истекло</string>
+    <string name="set_time">Установить время</string>
+    <string name="cancel">Отмена</string>
+</resources>
