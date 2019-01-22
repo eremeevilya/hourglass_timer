@@ -147,7 +147,7 @@ public class TimerService extends Service
                     .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
                     .setOngoing(true);
 
-            // Повышаем приоритет сервиса и показывае  уведомление
+            // Повышаем приоритет сервиса и показываем уведомление
             startForeground(NOTIFICATION_ID, builder.build());
 
             Intent send_intent = new Intent();

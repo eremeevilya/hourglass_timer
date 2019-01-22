@@ -1,10 +1,13 @@
 package eremeew_ilya.hourglass;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -28,6 +31,8 @@ public class HourglassView extends View
     private Paint paint_sand; // Для песка
     private Paint paint_grain; // Для песчинок
 
+    private Bitmap bitmap_sand = null;
+
     private Path path;
 
     private float progress;
@@ -43,7 +48,7 @@ public class HourglassView extends View
 
     private  MyThread thread = null;
 
-    public HourglassView(Context context)
+    public HourglassView(Context context, Bitmap bitmap_sand)
     {
         super(context);
 
@@ -79,6 +84,17 @@ public class HourglassView extends View
         paint_grain = new Paint();
         paint_grain.setColor(Color.YELLOW);
         paint_grain.setStrokeWidth(2.0f);
+
+        paint_sand = new Paint();
+        if(bitmap_sand == null)
+        {
+            paint_sand.setColor(Color.YELLOW);
+        }
+        else
+        {
+            BitmapShader shader = new BitmapShader(bitmap_sand, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+            paint_sand.setShader(shader);
+        }
 
         path = new Path();
 

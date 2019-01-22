@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity
             btn_start_stop.setText(resources.getString(R.string.start));
         }
 
-        hourglass_view = new HourglassView(this);
+        hourglass_view = new HourglassView(this, null);
         ll_container.addView(hourglass_view);
 
         /*
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
 
         // Получаем настройки
-        start_time_milliseconds = preferences.getLong(KEY_PREFERENCES_START_TIME, 0);
+        start_time_milliseconds = preferences.getLong(KEY_PREFERENCES_START_TIME, 30);
         tv_start_time.setText(FormatTime.formatTime((int)(start_time_milliseconds / 1000)));
 
         // Регистрируем BroadcastReceiver
